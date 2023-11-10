@@ -1,2 +1,2 @@
-# Learn-to-code
+# shecodesplus-assignment-one
 Learning how to code
