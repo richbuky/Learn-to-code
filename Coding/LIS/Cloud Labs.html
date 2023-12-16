@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Cloud Labs</title>
+    <link
+      rel="shortcut icon"
+      href="http://lims.mecure.com/resources/admin/images/fav_icon_cloud_labs.png"
+      type="image/png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      type="text/css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+      media="all"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"
+    />
+    <link
+      href="http://lims.mecure.com/resources/admin/css/style.default1.css"
+      rel="stylesheet"
+    />
+    <link
+      href="http://lims.mecure.com/resources/admin/styles/styles.css"
+      rel="stylesheet"
+    />
+
+    <script type="text/javascript">
+      BASE_URL = "http://lims.mecure.com/";
+    </script>
+    <style>
+      .bg-default {
+        background-color: #172b4d !important;
+      }
+      .fill-default {
+        fill: #172b4d !important;
+      }
+    </style>
+  </head>
+  <body class="bg-default">
+    <div class="main-content">
+      <div class="container h-100vh">
+        <div class="row login-wrap justify-content-center">
+          <div class="col-lg-5 col-md-7 loginScreen">
+            <div class="card bg-secondary border-0 mb-0">
+              <div class="class-header p-4 text-center">
+                <img
+                  src="http://lims.mecure.com/resources/admin/images/lims_logo.svg"
+                  class="navbar-brand-img"
+                  alt="Logo"
+                />
+              </div>
+              <div class="card-body px-lg-5 pb-4">
+                <div
+                  class="alert alert-danger"
+                  id="authontication_fail"
+                  style="display: none"
+                >
+                  <strong>Warning!</strong> <span></span>
+                </div>
+
+                <div
+                  class="alert alert-warning"
+                  id="vali_fail"
+                  style="display: none"
+                >
+                  <strong>Warning!</strong> <span></span>
+                </div>
+
+                <form
+                  action=""
+                  class="form-horizontal"
+                  method="post"
+                  id="first_login"
+                >
+                  <div class="login_step">
+                    <div class="form-group mb-3">
+                      <div
+                        class="input-group input-group-merge input-group-alternative"
+                      >
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"
+                            ><i class="fas fa-envelope-open-text"></i
+                          ></span>
+                        </div>
+                        <input
+                          type="text"
+                          class="form-control pl-2"
+                          placeholder="Email"
+                          value=""
+                          id="email"
+                          name="email"
+                          title="email"
+                          autocomplete="off"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div
+                        class="input-group input-group-merge input-group-alternative"
+                      >
+                        <div class="input-group-prepend">
+                          <span class="input-group-text"
+                            ><i class="fas fa-key"></i
+                          ></span>
+                        </div>
+                        <input
+                          autocomplete="off"
+                          type="password"
+                          class="form-control pl-2"
+                          value=""
+                          placeholder="Password"
+                          id="password"
+                          title="Password"
+                          name="password"
+                          required
+                        />
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <button
+                        type="button"
+                        class="btn my-4 login_ck uppercase w-100"
+                        id="btn-sign-in"
+                      >
+                        Sign In
+                      </button>
+                      <div style="text-align: center">
+                        <a href="javascript:void(0)" class="forgotPass"
+                          >Forgot password?</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="center_step" style="display: none">
+                    <div class="form-group">
+                      <label class="form-control-label" for="mobile-no"
+                        >Please Select Center</label
+                      >
+                      <select
+                        id="center"
+                        name="center"
+                        class="form-control"
+                      ></select>
+                    </div>
+                    <div class="form-group">
+                      <button
+                        type="button"
+                        class="btn my-4 center_ck uppercase w-100"
+                        id="btn-center-sign-in"
+                      >
+                        Sign In
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+          <!-- Forgot Password Start -->
+          <div class="col-lg-5 col-md-7 forgotPassScreen" style="display: none">
+            <div class="card bg-secondary border-0 mb-0">
+              <div class="class-header p-4 text-center">
+                <img
+                  src="http://lims.mecure.com/resources/admin/images/lims_logo.svg"
+                  class="navbar-brand-img"
+                  alt="Logo"
+                />
+              </div>
+              <div class="card-body px-lg-5 pb-4">
+                <div
+                  class="alert alert-danger"
+                  id="mobileNotMatch"
+                  style="display: none"
+                >
+                  <strong>Warning!</strong> <span></span>
+                </div>
+                <div class="login_step">
+                  <div class="form-group mb-3">
+                    <div
+                      class="input-group input-group-merge input-group-alternative"
+                    >
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"
+                          ><i class="fas fa fa-mobile"></i
+                        ></span>
+                      </div>
+                      <input
+                        type="number"
+                        class="form-control pl-2"
+                        placeholder="Mobile"
+                        value=""
+                        id="mobileNo"
+                        name="mobileNo"
+                        title="Mobile Number"
+                        autocomplete="off"
+                        required=""
+                      />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <button
+                      type="button"
+                      class="btn my-4 resetPasswordBtn uppercase w-100"
+                    >
+                      Reset Password
+                    </button>
+                    <div style="text-align: center">
+                      <a href="javascript:void(0)" class="gobackLogin"
+                        >Click For Login</a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End Forgot Password -->
+        </div>
+        <p class="copy-right mb-1">
+          A
+          <a target="_blank" href="https://www.healthdekho.com"
+            >HealthDekho Healthcare</a
+          >
+          Product. © 2020 All Rights Reserved
+        </p>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.scrollbar/0.2.11/jquery.scrollbar.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="http://lims.mecure.com/resources/admin/js/jquery.cookies.js"></script>
+    <script src="scripts/theme.js"></script>
+    <script>
+      jQuery(document).ready(function () {
+        var isDemoLoginCheck = false;
+
+        var c = jQuery.cookie("change-skin");
+        if (c && c == "greyjoy") {
+          jQuery(".btn-success")
+            .addClass("btn-orange")
+            .removeClass("btn-success");
+        } else if (c && c == "dodgerblue") {
+          jQuery(".btn-success")
+            .addClass("btn-primary")
+            .removeClass("btn-success");
+        } else if (c && c == "katniss") {
+          jQuery(".btn-success")
+            .addClass("btn-primary")
+            .removeClass("btn-success");
+        }
+      });
+
+      function getUrlVars() {
+        var vars = {};
+        var parts = window.location.href.replace(
+          /[?&]+([^=&]+)=([^&]*)/gi,
+          function (m, key, value) {
+            vars[key] = value;
+          }
+        );
+        return vars;
+      }
+
+      function getUrlParam(parameter, defaultvalue) {
+        var urlparameter = defaultvalue;
+        if (window.location.href.indexOf(parameter) > -1) {
+          urlparameter = getUrlVars()[parameter];
+        }
+        return urlparameter;
+      }
+
+      isDemoLogin = getUrlParam("login_type", "");
+
+      if (isDemoLogin && isDemoLogin == "demo") {
+        currentUrl = window.location.href
+          .split("/")
+          .slice(0, 3)
+          .join("/")
+          .replace("http://", "")
+          .replace("https://", "")
+          .replace("www.", "")
+          .split(/[/?#]/)[0];
+
+        if (currentUrl == "demo.cloud-labs.in") {
+          demoUsername = "DEMOLOGIN";
+          demoPassword = "DEMOPASSWORD";
+
+          isDemoLoginCheck = true;
+
+          document.getElementById("email").value = demoUsername;
+          document.getElementById("password").value = demoPassword;
+          setTimeout(function () {
+            document.getElementById("btn-sign-in").click();
+          }, 1000);
+        }
+      }
+
+      $("#email").change(function () {
+        var c = $(this).val().replace(/\s+/g, "");
+        $("#email").val(c);
+      });
+      $("#email").blur(function () {
+        var c = $(this).val().replace(/\s+/g, "");
+        $("#email").val(c);
+      });
+
+      function login() {
+        $(".login_ck").val("Loading...");
+        $(".login_ck").attr("disabled", true);
+        var u = $("#email").val();
+        var p = $("#password").val();
+
+        $.ajax({
+          type: "POST",
+          dataType: "json",
+          url: BASE_URL + "user/check_user_valid/",
+          data: {
+            email: u,
+            password: p,
+          },
+          success: function (data) {
+            $(".login_ck").val("Sign In");
+            $(".login_ck").attr("disabled", false);
+            // 0 = validation error, 1 = user/password wrong, 2 = user have assgned multiple centers, 3. single center assigned
+
+            if (data.status == 0) {
+              $("#authontication_fail").hide();
+              $("#vali_fail").show();
+              $("#vali_fail span").html(data.msg);
+            } else if (data.status == 1 || data.status == 4) {
+              $("#vali_fail").hide();
+              $("#authontication_fail").show();
+              $("#authontication_fail span").html(data.msg);
+            } else if (data.status == 2) {
+              $("#vali_fail").hide();
+              $("#authontication_fail").hide();
+              $(".login_step").hide();
+              $(".center_step").show();
+              $(".center_step select").html(data.msg);
+
+              if (isDemoLoginCheck) {
+                document.getElementById("btn-center-sign-in").click();
+              }
+            } else if (data.status == 3) {
+              window.location.href = BASE_URL + "user/dashboard";
+            } else if (data.status == 5) {
+              window.location.href = BASE_URL + "user/passwordChange";
+            }
+            //console.log(data.status);
+          },
+        });
+      }
+
+      function center_login() {
+        $(".center_ck").val("Loading...");
+        $(".center_ck").attr("disabled", true);
+        var u = $("#email").val();
+        var p = $("#password").val();
+        var c = $("#center").val();
+        $.ajax({
+          type: "POST",
+          url: BASE_URL + "user/user_chk_multiple_center/",
+          data: {
+            email: u,
+            password: p,
+            center: c,
+          },
+          success: function (data) {
+            if (data == "dashboard") {
+              window.location.href = BASE_URL + "user/dashboard";
+            } else {
+            }
+            //console.log(data.status);
+          },
+        });
+      }
+
+      $(".login_ck").click(function () {
+        login();
+      });
+
+      $(".center_ck").click(function () {
+        center_login();
+      });
+
+      $(".login_step").on("keypress", "input", function (e) {
+        if (e.which == 13) {
+          login();
+        }
+      });
+      // Forgt Password
+      $(".forgotPass").click(function () {
+        $(".forgotPassScreen").show();
+        $(".loginScreen").hide();
+      });
+      // Login Screen
+      $(".gobackLogin").click(function () {
+        $(".forgotPassScreen").hide();
+        $(".loginScreen").show();
+      });
+      $(".resetPasswordBtn").click(function () {
+        var mobile = $("#mobileNo").val();
+        if (mobile == "") {
+          $("#mobileNotMatch").show();
+          $("#mobileNotMatch").html(
+            '<div style="width: 100%;text-align: left; font-size: 12px;color: #f00;padding-left: 15px;">Please Enter Mobile number</div>'
+          );
+        } else if (mobile.length < 10) {
+          $("#mobileNotMatch").show();
+          $("#mobileNotMatch").html(
+            '<div style="width: 100%;text-align: left; font-size: 12px;color: #f00;padding-left: 15px;">Mobile number not exists</div>'
+          );
+        } else {
+          $("#mobileNotMatch").hide();
+          $("#mobileNotMatch").html("");
+          $(".resetPasswordBtn").attr("disabled", true);
+          $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: BASE_URL + "user/forgotPasswordWithSMS/",
+            data: {
+              mobile: mobile,
+            },
+            success: function (data) {
+              if (data.status == 0) {
+                $(".resetPasswordBtn").attr("disabled", false);
+                $("#mobileNotMatch").show();
+                $("#mobileNotMatch").html(
+                  '<div style="width: 100%;text-align: left; font-size: 12px;color: #f00;padding-left: 15px;">Mobile number not exists</div>'
+                );
+              } else if (data.status == 1) {
+                $("#mobileNotMatch").show();
+                $("#mobileNotMatch").html(
+                  '<div style="width: 100%;text-align: left; font-size: 12px;color: #000;padding-left: 15px;">Login password has been sent in your mobile number. Please go login page and enter received password with userid.</div>'
+                );
+              } else if (data.status == 2) {
+                $("#mobileNotMatch").show();
+                $("#mobileNotMatch").html(
+                  '<div style="width: 100%;text-align: left; font-size: 12px;color: #f00;padding-left: 15px;">Sorry unable to update the password belong multiple accounts.</div>'
+                );
+              } else {
+                $(".resetPasswordBtn").attr("disabled", false);
+                $("#mobileNotMatch").show();
+                $("#mobileNotMatch").html(
+                  '<div style="width: 100%;text-align: left; font-size: 12px;color: #f00;padding-left: 15px;">Something Wrong, please try again sometime</div>'
+                );
+              }
+              console.log(data);
+            },
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

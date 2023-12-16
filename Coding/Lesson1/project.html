@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fruit Juices🍹</title>
+    <style>
+      body {
+        background-color: rgb(240, 247, 246);
+        font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+          sans-serif;
+      }
+      h1 {
+        text-align: center;
+        color: #5585b5;
+      }
+      h2 {
+        text-align: center;
+        border: 1px solid #5585b5;
+        padding: 15px;
+        font-size: 18px;
+        border-radius: 4px;
+        color: #f34242;
+      }
+      img {
+        display: block;
+        margin: 0 auto;
+        max-width: 100%;
+        border-radius: 10px;
+      }
+      p {
+        line-height: 1.5;
+        font-size: 14px;
+        margin: 20 0 10px;
+        color: #5585b5;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px 40px;
+      }
+      .learn-more {
+        text-decoration: none;
+        color: #f34242;
+        font-size: 14px;
+      }
+      .learn-more:hover {
+        text-decoration: underline;
+      }
+      button {
+        display: block;
+        margin: 20px auto;
+        background-color: #f38787;
+        color: rgb(121, 250, 250);
+        font-size: 16px;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+        transition: all 200ms ease-in-out;
+      }
+      button:hover {
+        opacity: 0.6;
+        cursor: pointer;
+      }
+      .footer {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1><em>I love fruit juices </em>🍹</h1>
+      <h2>
+        <strong>Especially the greens </strong>
+      </h2>
+
+      <img
+        src="https://s3.amazonaws.com/shecodesio-production/uploads/files/000/102/508/original/Fruit_juices.jpeg?1698760111"
+        alt="Fruit Juices🍹"
+      />
+      <hr />
+      <p>
+        Juices🍹can be made out of a variety of fruits and vegetables. They
+        offer numerous health benefits, including improved digestion, weight
+        loss, reduced inflammation, and boosted immunity.
+      </p>
+      <a
+        href="https://en.wikipedia.org/wiki/Juice"
+        target="_blank"
+        class="learn-more"
+      >
+        Learn more on Wikipedia
+      </a>
+      <button class="Explore">🔎Let's Explore</button>
+      <p class="footer">
+        This page was built by
+        <a href="https://www.linkedin.com/in/bukolaadekoya/" target="_blank">
+          <em>Bukola Adekoya </em></a
+        >
+      </p>
+    </div>
+    <script>
+      function respond() {
+        let name = prompt("What is your name?");
+        let email = prompt("What is your email address?");
+        let juice = prompt("Which is your favourite Juice 🍹?");
+        let emoji = prompt("What is your favourite emoji?");
+        if (juice === "green" || juice === "Green" || juice === "GREEN") {
+          alert(
+            " 👍 Welldone " + name + "! I am sure it's been refreshing " + emoji
+          );
+        } else {
+          alert("Thank you " + name + "! Get the greens too" + emoji);
+        }
+      }
+      let explore = document.querySelector(".Explore");
+      explore.addEventListener("click", respond);
+    </script>
+  </body>
+</html>

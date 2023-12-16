@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Structure</title>
+    <style>
+    
+      form {
+        border: 1px solid grey;
+        padding: 15px;
+        border-radius: 10px;
+        max-width: 100%;
+      }
+      .button{
+        background-color: blue;
+        color: aliceblue;
+
+      }
+      .left-side {
+        float: left;
+      }
+      .right-side {
+        float: right;
+        font-size: 25px;
+      }
+      .container {
+        display: flex;
+        justify-content: space-between;
+      }
+      td {
+        display: table-cell;
+        padding: 8px;
+        border: none;
+        vertical-align: top;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <input type="text" placeholder="Lagos" />
+      <input type="submit" value="Search" class="button" />
+      <h1>Lagos</h1>
+      <div class="temperature">
+        <div class="left-side">
+          <p>
+            Saturday 15:32 Thunderstorms
+            <br />
+            Humidity:<strong>81%.</strong> Wind: <strong> 8 km/h</strong>
+          </p>
+        </div>
+        <div class="right-side">
+          <p><strong>30°C</strong></p>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <div class="days">
+      <table id="" class="rows">
+        <tbody>
+        <tr class="h2">
+        <td>Sat</td>
+        <td>Sun</td>
+        <td>Mon</td>
+        <td>Tue</td>
+        <td>Wed</td>
+        </tr>
+        <td>
+          <div class="logos">
+            ☁️
+            </td>
+            <td>
+          <div class="logos">
+            ☁️
+            </td>
+            <td>
+          <div class="logos">
+            ☁️
+            </td>
+            <td>
+          <div class="logos">
+            ☁️
+            </td>
+            <td>
+          <div class="logos">
+            ☁️
+            </td>
+        <tr class="temp">
+        <td><strong>32°</strong>25°</td>
+        <td><strong>33°</strong>25°</td>
+        <td><strong>33°</strong>25°</td>
+        <td><strong>33°</strong>24°</td>
+        <td><strong>33°</strong>25°</td>
+        </tr>
+        </tbody>
+         </table>
+         <br />
+      <br />
+      <br />
+      <br />
+      </div>
+       <div class="footer">
+        This project was coded by <a href="https://www.linkedin.com/in/bukolaadekoya/" target="_blank">
+          <strong>Bukola Adekoya</strong></a> and is 
+        <a href="https://github.com/richbuky/Learn-to-code" target="_blank">
+          <strong>open-sourced on Github </strong></a>
+         and <a href="https://app.netlify.com/login" target="_blank">
+          <strong> hosted on Netlify</strong></a>
+        </div>
+    </form>
+  </body>
+</html>
